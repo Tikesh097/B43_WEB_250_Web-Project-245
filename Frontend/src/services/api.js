@@ -1,20 +1,36 @@
 import axios from "axios";
+const API_URL = "http://localhost:5000/api"; // Replace with your actual API URL
 
-const API_URL = "http://your-api-url.com/api"; // Replace with your actual API URL
-
-// User Registration
+// Function to register a user
 export const registerUser = async (userData) => {
-  return await axios.post(`${API_URL}/register`, userData);
+  try {
+    const response = await axios.post(`${API_URL}/register`, userData);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || "Registration failed!";
+  }
 };
 
-// User Login
-export const loginUser = async (credentials) => {
-  return await axios.post(`${API_URL}/login`, credentials);
+// Function to log in a user
+export const loginUser = async (userData) => {
+  try {
+    const response = await axios.post(`${API_URL}/login`, userData);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || "Login failed!";
+  }
 };
 
-// Submit Crime Report
+// Function to submit a crime report (Requires Auth)
 export const submitReport = async (reportData) => {
-  return await axios.post(`${API_URL}/reports`, reportData);
+  try {
+    const response = await axios.post(`${API_URL}/reports`, reportData, {
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || "Failed to submit report!";
+  }
 };
 
 // Fetch Reports for Case Tracking

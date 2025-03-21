@@ -3,8 +3,7 @@ import { registerUser } from '../../services/api';
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        username: '',
         email: '',
         password: '',
         confirmPassword: ''
@@ -35,8 +34,7 @@ const Register = () => {
             setSuccess('Registration successful! You can now log in.');
             setError('');
             setFormData({
-                firstName: '',
-                lastName: '',
+                username: '',
                 email: '',
                 password: '',
                 confirmPassword: ''
@@ -56,22 +54,11 @@ const Register = () => {
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label className="block text-gray-700 mb-1">First Name</label>
+                        <label className="block text-gray-700 mb-1">Username</label>
                         <input
                             type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            className="border rounded w-full py-2 px-3"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-gray-700 mb-1">Last Name</label>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
+                            name="username"
+                            value={formData.username}
                             onChange={handleChange}
                             className="border rounded w-full py-2 px-3"
                             required
