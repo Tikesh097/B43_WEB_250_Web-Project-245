@@ -8,6 +8,7 @@ const router = express.Router();
 // User Registration
 router.post("/register", async (req, res) => {
   try {
+    console.log('Received registration data:', req.body);
     const { username, email, password, confirmPassword } = req.body;
 
     // Check if passwords match
